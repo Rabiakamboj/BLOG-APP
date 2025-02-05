@@ -8,7 +8,6 @@ const DatabaseConnection = require('./Common/DBconnection.js');
 DatabaseConnection();
 
 
-
 // Routes
 const AuthRoutes = require('./Routes/authRoutes.js');
 const PostRoutes = require('./Routes/postRoutes.js');

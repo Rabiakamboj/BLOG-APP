@@ -11,6 +11,10 @@ const PostSchema = mongoose.Schema({
         type : String,
         trim : true
     },
+    like : {
+        type : Boolean,
+        default : false
+    },
     postedAt : {
         type : String,
         default : new Date().toLocaleDateString()
@@ -26,3 +30,4 @@ const PostSchema = mongoose.Schema({
 const PostModel = mongoose.model("Post", PostSchema);
 
 module.exports = PostModel;
+

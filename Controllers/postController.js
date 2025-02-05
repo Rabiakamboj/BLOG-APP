@@ -64,4 +64,23 @@ const DeletePostById = async (req, res) => {
 }
 
 
-module.exports = { CreatePost, FetchAllPost, UpdatePostById, DeletePostById };
+
+
+
+const TogglePostLike = async (req, res) => {
+    try {
+        const like = await PostModel.findByIdAndUpdate(req.body.id, {like : req.body.like}, {new : true});
+
+        if(like){
+            res.status(200).json({ status : 200, success : true, message : "Successfully Updated", data : like})
+        }else{
+            res.status(200).json({ status : 400, success : false, message : "Failed To Updated",})
+        }
+    } catch (error) {
+        console.log("ERROR DURING LIKE", error);
+    }
+}
+
+
+
+module.exports = { CreatePost, FetchAllPost, UpdatePostById, DeletePostById, TogglePostLike };
