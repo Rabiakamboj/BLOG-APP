@@ -12,6 +12,7 @@ DatabaseConnection();
 const AuthRoutes = require('./Routes/authRoutes.js');
 const PostRoutes = require('./Routes/postRoutes.js');
 const CommentRoutes = require('./Routes/commentRoutes.js');
+const replycontrollers = require('./Routes/replyroutes.js');
 
 const PORT = process.env.PORT || 8080; // app's port
 const app = express() // create express server
@@ -27,6 +28,7 @@ app.get('/app', function(req, res){
 app.use('/api/auth', AuthRoutes);
 app.use('/api/post', PostRoutes);
 app.use('/api/comment', CommentRoutes);
+app.use('/api/reply', replycontrollers)
 
 
 app.listen(PORT, ()=> console.log(`SERVER LISTENING ON PORT ${PORT}`))

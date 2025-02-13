@@ -1,5 +1,6 @@
 const PostModel = require('../Models/postModel.js');
 
+
 const CreatePost = async (req, res) => {
     try {
         const post = await PostModel.create(req.body);
@@ -28,6 +29,20 @@ const FetchAllPost = async (req, res) => {
     }
 }
 
+
+const FetchAllPostById = async (req, res) => {
+    try {
+        const posts = await PostModel.find({userid : req.query.userId});
+
+        if(posts.length == 0){
+            res.status(200).json({status : 200, success : true, message : "Empty", data : []});
+        }else{
+            res.status(200).json({status : 200, success : true, message : "Fetch Successfully", data : posts});
+        }
+    }catch (error){
+        console.log("ERROR DURING FETCH ALL POSTS", error);
+    }
+}
 
 // postid, title, content
 
@@ -83,4 +98,4 @@ const TogglePostLike = async (req, res) => {
 
 
 
-module.exports = { CreatePost, FetchAllPost, UpdatePostById, DeletePostById, TogglePostLike };
+module.exports = { CreatePost, FetchAllPost, UpdatePostById, DeletePostById, TogglePostLike, FetchAllPostById };

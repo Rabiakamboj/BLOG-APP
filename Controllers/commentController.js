@@ -1,5 +1,6 @@
 const CommentModel = require('../Models/commentModel.js');
 const PostModel = require('../Models/postModel.js');
+const { FetchAllCommentById } = require('./replycontroller.js');
 
 
 const CreateComment = async (req, res) => {
@@ -28,6 +29,23 @@ const FetchComment = async (req, res) => {
         } catch (error) {
         console.log("ERROR DURING FETCH COMMENT", error);
     }
+}
+
+
+const FetchCommentById = async (req, res) => {
+    const postid = req.query.postid;
+
+    try { 
+        const comments = await CommentModel.find({postId : postid});
+
+        if(comments.length == 0){
+            res.status(200).json({status : 200, success : true, message : "Empty", data : []});
+        }else{
+            res.status(200).json({status : 200, success : true, message : "Fetch Successfully", data : comments});
+        }
+        } catch (error) {
+        console.log("ERROR DURING FETCH COMMENT", error);
+    } 
 }
 
 
@@ -67,7 +85,7 @@ const DeleteComment = async (req, res) => {
 }
 
 
-module.exports = { CreateComment, FetchComment, EditComment, DeleteComment };
+module.exports = { CreateComment, FetchComment, EditComment, DeleteComment, FetchCommentById};
 
 
 
