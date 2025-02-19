@@ -1,7 +1,8 @@
+const ReplyModel = require('../Models/replyModel.js')
 
-
-
+//-------------13----------------------
 const ReplyComments = async (req, res) => {
+
     try {
         const post = await ReplyModel.create(req.body);
         if(!post){
@@ -15,4 +16,4 @@ const ReplyComments = async (req, res) => {
 }
 
 
-module.exports = {ReplyComments };
+module.exports = ReplyComments;

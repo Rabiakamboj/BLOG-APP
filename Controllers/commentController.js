@@ -1,6 +1,5 @@
 const CommentModel = require('../Models/commentModel.js');
 const PostModel = require('../Models/postModel.js');
-const { FetchAllCommentById } = require('./replycontroller.js');
 
 
 const CreateComment = async (req, res) => {

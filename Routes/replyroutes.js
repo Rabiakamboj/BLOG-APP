@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const { ReplyComments } = require('../Controllers/replycontrollers.js');
+const ReplyComments = require('../Controllers/replyControllers.js')
 
 // REST ARCHITECTURE
+//------------------------------13feb--------------------
 
 
-router.get('/fetchallid', ReplyComments);
+router.post('/', ReplyComments);
 
 module.exports = router;

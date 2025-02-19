@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 
 // Reply Schema
+//--------------------------13feb----------------------
 const ReplySchema = mongoose.Schema({
     message : {
-        type :"nice to work",
-        ref : "User"
+        type : String,
+        trim : true
     },
-    ContentId : {
+    commentId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "Post"
     },
     userId : {
-        type : String,
-        trim : true
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "User"
     }
 });
 
